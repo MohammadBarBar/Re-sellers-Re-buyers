@@ -1,0 +1,39 @@
+/* Center the form on the page */
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Style the form container */
+.form-container {
+  border: 2px solid black;
+  width: 600px;
+  color: rgb(108, 96, 96);
+  padding: 20px;
+  background: rgba(245, 245, 245, 0.907);
+}
+
+.form-title {
+  display: flex;
+  justify-content: flex-end;
+  font-size: small;
+}
+
+/* Add margin between fields */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+  margin-bottom: 30px;
+}
+
+.form-label-name {
+  font-size: medium;
+  margin-bottom: 8px;
+}
+.form-label-input {
+  border-radius: 5px;
+  padding: 8px;
+}
