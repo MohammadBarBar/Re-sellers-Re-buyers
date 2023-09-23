@@ -12,7 +12,7 @@ git clone https://github.com/MohammadBarBar/Re-sellers-Re-buyers.git
 
 ## Install Dependencies and Start the React App:
 
-install the project dependencies using:`npm start`
+install the project dependencies using:`npm install`
 Once the dependencies are installed, you can start your React app using scripts
 
 ## Available Scripts
