@@ -10,11 +10,19 @@ function ResellerRebuyerList() {
   useEffect(() => {
     // Fetch data from an API
     fetch(config.serverApi)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not OK");
+        }
+        return response.json();
+      })
       .then((data) => {
         // Handle the fetched data
         const { userData: retreivedData } = data;
         setReSellerReBuyer(retreivedData);
+      })
+      .catch((error) => {
+        alert("Error fetching data:", error);
       });
   }, []); // The empty dependency array [] means this effect runs once, like componentDidMount
 

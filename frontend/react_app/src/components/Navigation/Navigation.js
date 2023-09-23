@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 function Navigation() {
   return (
     <nav>
-      <NavLink className="links" to="home">
+      <NavLink className="links" to="/">
         Home
       </NavLink>
       {/* <NavLink className="links" to="addreSellerReBuyer">
