@@ -8,7 +8,7 @@ relationship between Re-seller and a Re-buyer.
 To install this project, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/MohammadBarBar/Re-sellers-Re-buyers.git`
-2. Navigate to the project directory: `cd Re-sellers-Re-buyers`
+2. Navigate to the project directory: `cd Re-sellers-Re-buyers/backend/expree-app`
 3. Install dependencies: `npm install`
 
 ## Usage
