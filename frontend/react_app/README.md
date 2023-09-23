@@ -8,7 +8,7 @@ git clone https://github.com/MohammadBarBar/Re-sellers-Re-buyers.git
 
 ## Navigate to the Project Directory:
 
-cd Re-sellers-Re-buyers
+cd Re-sellers-Re-buyers/frontend/react-app
 
 ## Install Dependencies and Start the React App:
 
