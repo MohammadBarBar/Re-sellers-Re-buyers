@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./form.css";
 import config from "../../services/config.json";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import MyInput from "../MyInput/MyInput";
 import { useParams } from "react-router-dom";
+import MyForm from "../MyForm/MyForm";
 
 function ResellerRebuyerForm() {
   const { id } = useParams(); //  Read the url params and check for ID
@@ -26,8 +26,6 @@ function ResellerRebuyerForm() {
     e.preventDefault();
     if (id) {
       const api = config.serverApi + "/" + id; // call the ResellerRebuyers/:id
-      console.log(id);
-      console.log(formData);
       fetch(api, {
         method: "POST",
         headers: {
@@ -98,69 +96,8 @@ function ResellerRebuyerForm() {
     }
     //Send the POST request
   }
-  if (id) {
-    // Conditinal Rendering If we have ID value So we need to update contents
-    return (
-      <div className="container centered-form">
-        <ToastContainer /> {/* Add toast notification */}
-        <div className="form-container">
-          <h2 className="mb-4 form-title">Update Re-Seller/Re-buyer</h2>
-          <form onSubmit={handleSubmit}>
-            <MyInput
-              name="reSeller"
-              type="text"
-              placeholder="Add a new reSeller that not exist"
-              label="Re-Seller"
-              value={id}
-              onChange={handleInputChange}
-              disabledFlag={true}
-            />
-            <MyInput
-              name="reBuyer"
-              type="text"
-              placeholder="Add a new reBuyer that not exist"
-              label="Re-Buyer"
-              value={formData.reBuyer}
-              onChange={handleInputChange}
-            />
-            <button type="submit" className="btn btn-info">
-              Update record
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="container centered-form">
-        <ToastContainer />
-        <div className="form-container">
-          <h2 className="mb-4 form-title">Add Re-Seller/Re-buyer</h2>
-          <form onSubmit={handleSubmit}>
-            <MyInput
-              name="reSeller"
-              type="text"
-              placeholder="Add a new reSeller that not exist"
-              label="Re-Seller"
-              value={formData.reSeller}
-              onChange={handleInputChange}
-            />
-            <MyInput
-              name="reBuyer"
-              type="text"
-              placeholder="Add a new reBuyer that not exist"
-              label="Re-Buyer"
-              value={formData.reBuyer}
-              onChange={handleInputChange}
-            />
-            <button type="submit" className="btn btn-info">
-              Add record
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
+  if (id) return MyForm({ id, formData, handleInputChange, handleSubmit });
+  else return MyForm({ formData, handleInputChange, handleSubmit });
 }
 
 export default ResellerRebuyerForm;

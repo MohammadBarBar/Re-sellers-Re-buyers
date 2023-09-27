@@ -1,13 +1,8 @@
 // Middleware to validate and associate Re-seller and Re-buyer
-function validateAndAssociate(reSellers, reBuyers) {
+function validateAndAssociate(reSellersRebuyers) {
   return (req, res, next) => {
     try {
       const { reSeller, reBuyer } = req.body;
-
-      // Check if seller and buyer IDs are provided
-      if (!reSeller || !reBuyer) {
-        throw new Error("ReSeller and ReBuyer are required");
-      }
 
       const ValuesofReSeller = reSeller.split(/\s*,\s*/); // Split using a regex with comma as the separator
       const ValuesofReBuyer = reBuyer.split(/\s*,\s*/); // Split using a regex with comma as the separator
@@ -15,17 +10,17 @@ function validateAndAssociate(reSellers, reBuyers) {
       if (ValuesofReSeller.length > 1 || ValuesofReBuyer.length > 1) {
         throw new Error(`Please Enter one ReSeller & one ReBuyer per once !!`);
       }
-      // Check if the seller and buyer IDs exist in their respective lists
-      const existingSeller = reSellers.includes(reSeller);
-      const existingBuyer = reBuyers.includes(reBuyer);
-
-      if (existingBuyer) {
-        throw new Error(`ReBuyer : ${reBuyer} is Already have a ReSeller`);
-      }
+      const existingSeller = reSellersRebuyers.find(
+        (entry) => entry.reSeller === reSeller
+      );
+      const existingBuyerIndex = reSellersRebuyers.findIndex((entry) =>
+        entry.reBuyer.includes(reBuyer)
+      );
 
       req.Seller = reSeller;
       req.Buyer = reBuyer;
       req.existingSeller = existingSeller;
+      req.existingBuyerIndex = existingBuyerIndex;
 
       // Proceed to the next middleware or route handler
       next();
