@@ -23,6 +23,7 @@ function MyInput({
         value={value}
         onChange={(evt) => onChange(evt)}
         disabled={disabledFlag === true ? true : false}
+        required
       />
     </div>
   );
